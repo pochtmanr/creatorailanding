@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-inter);
+  --font-headline: var(--font-space-grotesk);
+  --font-mono: var(--font-geist-mono);
+
+  /* Surface / Background */
+  --color-surface: #131313;
+  --color-surface-dim: #131313;
+  --color-surface-bright: #3a3939;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-surface-container-low: #1c1b1b;
+  --color-surface-container: #201f1f;
+  --color-surface-container-high: #2a2a2a;
+  --color-surface-container-highest: #353534;
+  --color-surface-variant: #353534;
+
+  /* Primary */
+  --color-primary: #ffb59d;
+  --color-primary-container: #ff6b35;
+  --color-primary-fixed: #ffdbd0;
+  --color-primary-fixed-dim: #ffb59d;
+
+  /* On colors */
+  --color-on-surface: #e5e2e1;
+  --color-on-surface-variant: #e1bfb5;
+  --color-on-primary: #5d1900;
+  --color-on-primary-container: #5f1900;
+
+  /* Secondary */
+  --color-secondary: #ffb59d;
+  --color-secondary-container: #76331b;
+  --color-on-secondary: #581d07;
+  --color-on-secondary-container: #fb9d7d;
+
+  /* Tertiary */
+  --color-tertiary: #59d5fb;
+  --color-tertiary-container: #00a7cb;
+  --color-on-tertiary: #003543;
+  --color-on-tertiary-container: #003744;
+
+  /* Outline */
+  --color-outline: #a98a80;
+  --color-outline-variant: #594139;
+
+  /* Error */
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+
+  /* Inverse */
+  --color-inverse-surface: #e5e2e1;
+  --color-inverse-on-surface: #313030;
+  --color-inverse-primary: #ab3500;
+}
+
+/* Custom animations and utilities */
+@keyframes gradient-flow {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes drift {
+  from { transform: translateY(0px) translateX(0px); }
+  to { transform: translateY(-30px) translateX(15px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { filter: drop-shadow(0 0 10px oklch(0.65 0.2 30 / 0.2)); }
+  50% { filter: drop-shadow(0 0 25px oklch(0.65 0.2 30 / 0.5)); }
+}
+
+@keyframes reveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-gradient-text {
+  background: linear-gradient(to right, #e5e2e1, #ffb59d, #ff6b35, #e5e2e1);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-flow 5s linear infinite;
+}
+
+.glass-panel {
+  background: oklch(0.3 0 0 / 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid oklch(0.6 0.03 30 / 0.15);
+}
+
+.drift-slow {
+  animation: drift 12s ease-in-out infinite alternate;
+}
+
+.drift-fast {
+  animation: drift 8s ease-in-out infinite alternate-reverse;
+}
+
+.pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-rtl {
+  from { transform: translateX(0); }
+  to { transform: translateX(50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+[dir="rtl"] .animate-marquee {
+  animation-name: marquee-rtl;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+}
+
+::selection {
+  background: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+/* ─── Theme transition ─────────────────────────────────────────────────────── */
+
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ─── Light mode overrides ─────────────────────────────────────────────────── */
+
+html.light {
+  /* Surface hierarchy from DESIGN.md — clean whites */
+  --color-surface: #F8F9FA;
+  --color-surface-dim: #DDDEDE;
+  --color-surface-bright: #FFFFFF;
+  --color-surface-container-lowest: #FFFFFF;
+  --color-surface-container-low: #F3F4F5;
+  --color-surface-container: #EBEBEC;
+  --color-surface-container-high: #E7E8E9;
+  --color-surface-container-highest: #DDDEDE;
+  --color-surface-variant: #E7E8E9;
+
+  /* Dark charcoal text — never pure black */
+  --color-on-surface: #1A1A1B;
+  --color-on-surface-variant: #4A4A4F;
+
+  /* Primary accent — Obsidian Fire */
+  --color-primary: #AB3500;
+  --color-primary-container: #FF6B35;
+  --color-primary-fixed: #FFDBD0;
+  --color-primary-fixed-dim: #FFB59D;
+  --color-on-primary: #FFFFFF;
+  --color-on-primary-container: #FFFFFF;
+
+  /* Secondary */
+  --color-secondary: #AB3500;
+  --color-secondary-container: #FFDBD0;
+  --color-on-secondary: #FFFFFF;
+  --color-on-secondary-container: #5D1900;
+
+  /* Tertiary */
+  --color-tertiary: #006880;
+  --color-tertiary-container: #B5EBFF;
+  --color-on-tertiary: #FFFFFF;
+  --color-on-tertiary-container: #001F28;
+
+  /* Outline */
+  --color-outline: #857370;
+  --color-outline-variant: #E1BFB5;
+
+  /* Error */
+  --color-error: #BA1A1A;
+  --color-error-container: #FFDAD6;
+
+  /* Inverse */
+  --color-inverse-surface: #1A1A1B;
+  --color-inverse-on-surface: #F8F9FA;
+  --color-inverse-primary: #FFB59D;
+}
+
+html.light .glass-panel {
+  background: oklch(1 0 0 / 0.7);
+  backdrop-filter: blur(20px);
+  border-color: oklch(0.75 0.02 30 / 0.15);
+}
+
+html.light .hero-gradient-text {
+  background: linear-gradient(to right, #1A1A1B, #AB3500, #FF6B35, #1A1A1B);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
