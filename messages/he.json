@@ -14,8 +14,7 @@
   "trust": {
     "creators": "יוצרים",
     "videos": "סרטונים נוצרו",
-    "quality": "איכות קולנועית",
-    "countries": "מדינות"
+    "languages": "שפות נתמכות"
   },
   "showcase": {
     "title": "האולפן שלך בכיס",
@@ -37,7 +36,7 @@
     "renderTitle": "סינתזת פריימים",
     "renderDesc": "האשכולות שלנו מרנדרים פריימים עקביים זמנית ברמת נאמנות גבוהה, תוך שמירה על סגנון ופיזיקה ללא עיוותים.",
     "exportTitle": "ייצוא ויראלי",
-    "exportDesc": "שדרוג ל-4K בלחיצה אחת והפצה מיידית לרשתות החברתיות. מותאם ל-TikTok, Reels ו-YouTube Shorts."
+    "exportDesc": "ייצוא ב-Full HD בלחיצה אחת והפצה מיידית לרשתות החברתיות. מותאם ל-TikTok, Reels ו-YouTube Shorts."
   },
   "features": {
     "title": "כל מה שצריך כדי ליצור",
@@ -70,29 +69,38 @@
   },
   "pricing": {
     "title": "מתוכנן ליוצרים",
-    "subtitle": "מאמנים עצמאיים ועד אולפני ענק — יש לנו תכנית בשבילך.",
+    "subtitle": "שלם לפי קרדיט. קרדיט אחד = שנייה אחת של וידאו. גדל איתך.",
     "monthly": "חודשי",
     "yearly": "שנתי (חסוך 20%)",
     "perMonth": "לחודש",
+    "freePrice": "חינם",
     "popular": "הכי פופולרי",
     "noCreditCard": "לא נדרש כרטיס אשראי",
     "savePercent": "חסוך {percent}% עם חיוב שנתי",
-    "explorerName": "Explorer",
-    "directorName": "Director",
+    "creditsCount": "{count} קרדיטים",
+    "secondsCount": "{count} שניות וידאו",
+    "freeName": "חינם",
+    "starterName": "Starter",
+    "proName": "Pro",
     "studioName": "Studio",
-    "explorerCta": "התחל חינם",
-    "directorCta": "עבור ל-Pro",
+    "freeCta": "התחל חינם",
+    "starterCta": "התחל עכשיו",
+    "proCta": "עבור ל-Pro",
     "studioCta": "צור קשר למכירות",
-    "feature_5gen": "5 יצירות AI לחודש",
-    "feature_720p": "איכות סטנדרטית (720p)",
+    "feature_basicQuality": "איכות סטנדרטית (720p)",
+    "feature_watermark": "סימן מים של CreatorAI",
     "feature_community": "תמיכת קהילה",
-    "feature_unlimited": "יצירות ללא הגבלה",
-    "feature_4k": "שדרוג 4K כלול",
-    "feature_beta": "גישה מוקדמת למודלי בטא",
-    "feature_priority": "תור GPU מועדף",
-    "feature_team": "מרכז שיתוף פעולה לצוות",
-    "feature_finetune": "כיוון עדין למודל מותאם אישית",
-    "feature_api": "גישה ייעודית ל-API",
+    "feature_hdQuality": "איכות HD (1080p)",
+    "feature_noWatermark": "ללא סימן מים",
+    "feature_emailSupport": "תמיכה במייל",
+    "feature_fullHd": "איכות Full HD (1080p)",
+    "feature_priorityQueue": "תור GPU מועדף",
+    "feature_betaModels": "גישה מוקדמת למודלי בטא",
+    "feature_voiceCloning": "שיבוט קול",
+    "feature_teamHub": "מרכז שיתוף פעולה לצוות",
+    "feature_customFinetune": "כיוון עדין למודל מותאם אישית",
+    "feature_dedicatedApi": "גישה ייעודית ל-API",
+    "feature_prioritySupport": "תמיכה מועדפת",
     "salesModal": {
       "title": "צור קשר למכירות",
       "email": "אימייל",
@@ -122,9 +130,9 @@
     "title": "שאלות נפוצות",
     "subtitle": "כל מה שצריך לדעת על CreatorAI.",
     "pricingQ": "האם CreatorAI באמת בחינם להתחלה?",
-    "pricingA": "כן! תכנית Explorer מעניקה לך 5 יצירות AI חינמיות לחודש באיכות 720p. לא נדרש כרטיס אשראי. שדרג בכל עת כדי לפתוח יצירות ללא הגבלה ואיכות 4K.",
+    "pricingA": "כן! התכנית החינמית מעניקה לך 10 קרדיטים לחודש באיכות סטנדרטית. לא נדרש כרטיס אשראי. שדרג בכל עת לקרדיטים נוספים ואיכות Full HD (1080p).",
     "qualityQ": "איזו איכות וידאו לצפות?",
-    "qualityA": "תכנית Explorer מרנדרת ב-720p. תכניות Director ו-Studio כוללות שדרוג 4K עם מנוע שיפור קנייני, המייצר פלט באיכות קולנועית המתאים לשימוש מקצועי.",
+    "qualityA": "התכנית החינמית מרנדרת ב-720p. תכניות Starter, Pro ו-Studio כוללות פלט Full HD (1080p) עם מנוע שיפור קנייני, המייצר תוצאות באיכות קולנועית המתאימות לשימוש מקצועי.",
     "formatsQ": "אילו פורמטי ייצוא נתמכים?",
     "formatsA": "אנו תומכים ב-MP4 (H.264/H.265), MOV ו-WebM. כל ייצוא מותאם אוטומטית לפלטפורמת היעד שלך — TikTok (9:16), Instagram (4:5, 1:1, 9:16), YouTube (16:9, 9:16).",
     "aiModelsQ": "אילו מודלי AI CreatorAI משתמש בהם?",
@@ -269,7 +277,7 @@
       },
       "accessibility": {
         "title": "איכות ללא פשרות",
-        "description": "אנחנו אובססיביים לגבי איכות הפלט. מ-720p ועד 4K, כל פריים צריך להיראות כאילו הופק על ידי צוות הפקה מקצועי."
+        "description": "אנחנו אובססיביים לגבי איכות הפלט. כל פריים צריך להיראות כאילו הופק על ידי צוות הפקה מקצועי."
       },
       "creatorFirst": {
         "title": "היוצר במרכז",

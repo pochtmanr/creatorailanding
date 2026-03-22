@@ -5,6 +5,14 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import { ThemeProvider } from "next-themes";
 import { isRtlLocale } from "@/i18n/routing";
 import { routing } from "@/i18n/routing";
+import { getBaseUrl } from "@/lib/config";
+import {
+  OrganizationSchema,
+  SoftwareApplicationSchema,
+  WebSiteSchema,
+} from "@/components/seo/json-ld";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "../globals.css";
 
 const inter = Inter({
@@ -27,7 +35,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
-  const baseUrl = "https://creatorai.art";
+  const baseUrl = getBaseUrl();
 
   return {
     title: {
@@ -85,12 +93,19 @@ export default async function LocaleLayout({
       className={`${inter.variable} ${spaceGrotesk.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <OrganizationSchema locale={locale} />
+        <SoftwareApplicationSchema locale={locale} />
+        <WebSiteSchema locale={locale} />
+      </head>
       <body className="font-sans antialiased">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <NextIntlClientProvider messages={messages}>
             {children}
           </NextIntlClientProvider>
         </ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

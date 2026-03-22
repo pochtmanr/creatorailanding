@@ -24,36 +24,6 @@ export default async function Home({ params }: Props) {
 
   return (
     <>
-      {/* JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [
-              {
-                "@type": "Organization",
-                name: "CreatorAI",
-                url: "https://creatorai.art",
-                logo: "https://creatorai.art/logo.png",
-                sameAs: [],
-              },
-              {
-                "@type": "SoftwareApplication",
-                name: "CreatorAI",
-                applicationCategory: "MultimediaApplication",
-                operatingSystem: "iOS",
-                offers: {
-                  "@type": "Offer",
-                  price: "0",
-                  priceCurrency: "USD",
-                },
-                description: "AI-powered video generation platform. Turn text prompts into cinematic content.",
-              },
-            ],
-          }),
-        }}
-      />
       <Navbar />
 
       {/* Hero Section — kept mostly as-is, only CTA buttons upgraded */}
@@ -160,20 +130,61 @@ export default async function Home({ params }: Props) {
         </div>
       </header>
 
-      {/* Wave Transition */}
-      <div className="h-24 bg-surface relative z-40 overflow-hidden">
-        <svg className="absolute bottom-0 w-full" fill="none" viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 120L60 110C120 100 240 80 360 76.7C480 73.3 600 86.7 720 90C840 93.3 960 86.7 1080 76.7C1200 66.7 1320 53.3 1380 46.7L1440 40V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" className="fill-surface-container-lowest" />
+      <TrustBar />
+
+      {/* Wave: surface → surface-container-low */}
+      <div className="h-16 bg-surface relative overflow-hidden">
+        <svg className="absolute bottom-0 w-full" fill="none" viewBox="0 0 1440 80" preserveAspectRatio="none">
+          <path d="M0 80L48 72C96 64 192 48 288 42.7C384 37.3 480 42.7 576 48C672 53.3 768 58.7 864 56C960 53.3 1056 42.7 1152 37.3C1248 32 1344 32 1392 32L1440 32V80H0Z" className="fill-surface-container-low" />
         </svg>
       </div>
 
-      <TrustBar />
       <ProductShowcase />
+
+      {/* Wave: surface-container-low → surface */}
+      <div className="h-16 bg-surface-container-low relative overflow-hidden">
+        <svg className="absolute bottom-0 w-full" fill="none" viewBox="0 0 1440 80" preserveAspectRatio="none">
+          <path d="M0 80L60 74.7C120 69.3 240 58.7 360 50.7C480 42.7 600 37.3 720 37.3C840 37.3 960 42.7 1080 48C1200 53.3 1320 58.7 1380 61.3L1440 64V80H0Z" className="fill-surface" />
+        </svg>
+      </div>
+
       <HowItWorks />
+
+      {/* Wave: surface → surface-container-low */}
+      <div className="h-16 bg-surface relative overflow-hidden">
+        <svg className="absolute bottom-0 w-full" fill="none" viewBox="0 0 1440 80" preserveAspectRatio="none">
+          <path d="M0 80L60 72C120 64 240 48 360 42.7C480 37.3 600 48 720 53.3C840 58.7 960 53.3 1080 45.3C1200 37.3 1320 26.7 1380 21.3L1440 16V80H0Z" className="fill-surface-container-low" />
+        </svg>
+      </div>
+
       <FeaturesBento />
+
+      {/* Wave: surface-container-low → surface */}
+      <div className="h-16 bg-surface-container-low relative overflow-hidden">
+        <svg className="absolute bottom-0 w-full" fill="none" viewBox="0 0 1440 80" preserveAspectRatio="none">
+          <path d="M0 80L48 74.7C96 69.3 192 58.7 288 53.3C384 48 480 48 576 50.7C672 53.3 768 58.7 864 58.7C960 58.7 1056 53.3 1152 48C1248 42.7 1344 37.3 1392 34.7L1440 32V80H0Z" className="fill-surface" />
+        </svg>
+      </div>
+
       <UseCases />
+
+      {/* Wave: surface → surface-container-low */}
+      <div className="h-16 bg-surface relative overflow-hidden">
+        <svg className="absolute bottom-0 w-full" fill="none" viewBox="0 0 1440 80" preserveAspectRatio="none">
+          <path d="M0 80L60 74.7C120 69.3 240 58.7 360 50.7C480 42.7 600 37.3 720 37.3C840 37.3 960 42.7 1080 48C1200 53.3 1320 58.7 1380 61.3L1440 64V80H0Z" className="fill-surface-container-low" />
+        </svg>
+      </div>
+
       <Pricing />
       <Testimonials />
+
+      {/* Wave: surface-container-low → surface */}
+      <div className="h-16 bg-surface-container-low relative overflow-hidden">
+        <svg className="absolute bottom-0 w-full" fill="none" viewBox="0 0 1440 80" preserveAspectRatio="none">
+          <path d="M0 80L48 72C96 64 192 48 288 42.7C384 37.3 480 42.7 576 48C672 53.3 768 58.7 864 56C960 53.3 1056 42.7 1152 37.3C1248 32 1344 32 1392 32L1440 32V80H0Z" className="fill-surface" />
+        </svg>
+      </div>
+
       <FAQ />
       <HomeBlogSection locale={locale} />
       <CTAFinal />

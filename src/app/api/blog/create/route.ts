@@ -1,5 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getBaseUrl } from "@/lib/config";
 
 function slugify(text: string): string {
   return text
@@ -111,7 +112,7 @@ export async function POST(request: NextRequest) {
     }
   }
 
-  const baseUrl = "https://creatorai.art";
+  const baseUrl = getBaseUrl();
   const englishUrl = `${baseUrl}/en/blog/${slug}`;
 
   // Auto-translate to Hebrew if enabled

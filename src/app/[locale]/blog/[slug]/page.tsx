@@ -1,9 +1,12 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { getBaseUrl } from "@/lib/config";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Reveal } from "@/components/ui/reveal";
 import { notFound } from "next/navigation";
+import { Link } from "@/i18n/navigation";
+import { BlogPostJsonLd } from "@/components/seo/blog-json-ld";
 import type { Metadata } from "next";
 
 type Props = {
@@ -64,7 +67,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPost(locale, slug);
   if (!post) return {};
 
-  const baseUrl = "https://creatorai.art";
+  const baseUrl = getBaseUrl();
   return {
     title: post.metaTitle || post.title,
     description: post.metaDescription || post.excerpt,
@@ -76,6 +79,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ]),
     },
     openGraph: {
+      title: post.ogTitle || post.title,
+      description: post.ogDescription || post.excerpt,
+      url: `${baseUrl}/${locale}/blog/${slug}`,
+      siteName: "CreatorAI",
+      type: "article",
+      images: post.imageUrl ? [{ url: post.imageUrl, width: 1200, height: 630 }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
       title: post.ogTitle || post.title,
       description: post.ogDescription || post.excerpt,
       images: post.imageUrl ? [post.imageUrl] : undefined,
@@ -94,6 +106,15 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
+      <BlogPostJsonLd
+        title={post.title}
+        description={post.excerpt || ""}
+        imageUrl={post.imageUrl}
+        authorName={post.authorName || "CreatorAI Team"}
+        publishedAt={post.publishedAt}
+        slug={slug}
+        locale={locale}
+      />
       <Navbar />
       <main className="min-h-screen pt-24 pb-16 px-4 sm:px-8">
         <article className="max-w-3xl mx-auto">
@@ -153,15 +174,15 @@ export default async function BlogPostPage({ params }: Props) {
           </Reveal>
 
           <Reveal delay={200} className="mt-12 pt-8 border-t border-on-surface/10">
-            <a
-              href={`/${locale}/blog`}
+            <Link
+              href="/blog"
               className="inline-flex items-center gap-2 text-primary-container hover:text-primary transition-colors font-headline font-bold"
             >
               <svg className="w-4 h-4 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
               </svg>
               {t("allPosts")}
-            </a>
+            </Link>
           </Reveal>
         </article>
       </main>

@@ -33,10 +33,9 @@ function AnimatedNumber({ target, suffix = "" }: { target: number; suffix?: stri
 }
 
 const metrics = [
-  { key: "creators", target: 50000, suffix: "+", icon: "users" },
-  { key: "videos", target: 1000000, suffix: "+", icon: "play" },
-  { key: "quality", target: 4, suffix: "K", icon: "sparkle" },
-  { key: "countries", target: 150, suffix: "+", icon: "globe" },
+  { key: "creators", target: 10000, suffix: "+", icon: "users" },
+  { key: "videos", target: 200000, suffix: "+", icon: "play" },
+  { key: "languages", target: 20, suffix: "+", icon: "globe" },
 ];
 
 const icons: Record<string, React.ReactNode> = {
@@ -48,11 +47,6 @@ const icons: Record<string, React.ReactNode> = {
   play: (
     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-    </svg>
-  ),
-  sparkle: (
-    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
     </svg>
   ),
   globe: (
@@ -69,7 +63,7 @@ export function TrustBar() {
     <section className="py-16 px-4 sm:px-8 bg-surface relative z-40">
       <div className="max-w-7xl mx-auto">
         <div className="glass-panel rounded-3xl p-8 md:p-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-3 gap-8 text-center">
             {metrics.map((m) => (
               <div key={m.key} className="flex flex-col items-center gap-2">
                 <div className="text-primary/60 mb-1">{icons[m.icon]}</div>
@@ -82,9 +76,9 @@ export function TrustBar() {
 
         {/* Platform Marquee */}
         <div className="mt-8 overflow-hidden relative">
-          <div className="flex gap-12 animate-marquee whitespace-nowrap">
-            {[...Array(2)].map((_, setIdx) => (
-              <div key={setIdx} className="flex gap-12 items-center shrink-0">
+          <div className="flex w-[200%] animate-marquee">
+            {[0, 1].map((setIdx) => (
+              <div key={setIdx} className="flex-1 flex items-center justify-around" aria-hidden={setIdx > 0 ? "true" : undefined}>
                 {/* TikTok */}
                 <svg className="h-6 text-on-surface/20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
                 {/* YouTube */}

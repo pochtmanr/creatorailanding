@@ -14,28 +14,52 @@ function CheckIcon({ className }: { className?: string }) {
   );
 }
 
+function CreditIcon({ className }: { className?: string }) {
+  return (
+    <svg className={`w-5 h-5 shrink-0 ${className ?? ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z" />
+    </svg>
+  );
+}
+
 const plans = [
   {
-    key: "explorer",
+    key: "free",
+    credits: 10,
+    seconds: 10,
     monthly: 0,
     yearly: 0,
-    features: ["5gen", "720p", "community"],
+    features: ["basicQuality", "watermark", "community"],
     variant: "secondary" as const,
     highlight: false,
   },
   {
-    key: "director",
-    monthly: 49,
-    yearly: 39,
-    features: ["unlimited", "4k", "beta", "priority"],
+    key: "starter",
+    credits: 100,
+    seconds: 100,
+    monthly: 9.99,
+    yearly: 7.99,
+    features: ["hdQuality", "noWatermark", "emailSupport"],
+    variant: "secondary" as const,
+    highlight: false,
+  },
+  {
+    key: "pro",
+    credits: 200,
+    seconds: 200,
+    monthly: 14.99,
+    yearly: 11.99,
+    features: ["fullHd", "priorityQueue", "betaModels", "voiceCloning"],
     variant: "primary" as const,
     highlight: true,
   },
   {
     key: "studio",
-    monthly: 199,
-    yearly: 159,
-    features: ["team", "finetune", "api"],
+    credits: 300,
+    seconds: 300,
+    monthly: 19.99,
+    yearly: 15.99,
+    features: ["fullHd", "teamHub", "customFinetune", "dedicatedApi", "prioritySupport"],
     variant: "secondary" as const,
     highlight: false,
   },
@@ -84,24 +108,24 @@ export function Pricing() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {plans.map((plan, i) => {
             const price = isYearly ? plan.yearly : plan.monthly;
             const showSavings = isYearly && plan.monthly > 0;
-            const showNoCreditCard = !isYearly && plan.key === "explorer";
-            const showSpacer = !showSavings && plan.key !== "explorer";
+            const showNoCreditCard = plan.key === "free";
+            const showSpacer = !showSavings && !showNoCreditCard;
 
             return (
               <Reveal key={plan.key} delay={i * 100}>
                 <div
-                  className={`p-10 rounded-[2.5rem] flex flex-col h-full ${
+                  className={`p-8 lg:p-10 rounded-[2.5rem] flex flex-col h-full ${
                     plan.highlight
                       ? "bg-primary-container/10 border-2 border-primary-container relative overflow-hidden"
                       : "glass-panel"
                   }`}
                 >
                   {plan.highlight && (
-                    <div className="absolute top-0 end-0 bg-primary-container text-on-primary-container px-6 py-2 rounded-bl-2xl text-[10px] font-bold tracking-[0.2em] uppercase">
+                    <div className="absolute top-0 end-0 bg-primary-container text-on-primary-container px-6 py-2 rounded-es-2xl text-[10px] font-bold tracking-[0.2em] uppercase">
                       {t("popular")}
                     </div>
                   )}
@@ -111,14 +135,20 @@ export function Pricing() {
                   </h4>
 
                   <div className="flex items-baseline gap-1 mb-2">
-                    <span className="text-4xl font-bold font-headline">${price}</span>
-                    <span className="text-on-surface/40 text-sm uppercase tracking-widest">
-                      /{t("perMonth")}
-                    </span>
+                    {price === 0 ? (
+                      <span className="text-4xl font-bold font-headline">{t("freePrice")}</span>
+                    ) : (
+                      <>
+                        <span className="text-4xl font-bold font-headline">${price}</span>
+                        <span className="text-on-surface/40 text-sm uppercase tracking-widest">
+                          /{t("perMonth")}
+                        </span>
+                      </>
+                    )}
                   </div>
 
                   {showSavings && (
-                    <p className="text-primary-container text-xs mb-6">
+                    <p className="text-primary-container text-xs mb-4">
                       {t("savePercent", {
                         percent: Math.round((1 - plan.yearly / plan.monthly) * 100),
                       })}
@@ -126,12 +156,25 @@ export function Pricing() {
                   )}
 
                   {showNoCreditCard && (
-                    <p className="text-on-surface/40 text-xs mb-6">{t("noCreditCard")}</p>
+                    <p className="text-on-surface/40 text-xs mb-4">{t("noCreditCard")}</p>
                   )}
 
-                  {showSpacer && <div className="mb-6" />}
+                  {showSpacer && <div className="mb-4" />}
 
-                  <ul className="space-y-4 mb-12 flex-grow">
+                  {/* Credits badge */}
+                  <div className="flex items-center gap-2 mb-6 p-3 rounded-2xl bg-surface-container-highest/50">
+                    <CreditIcon className={plan.highlight ? "text-primary-container" : "text-primary"} />
+                    <div>
+                      <p className="text-sm font-bold text-on-surface">
+                        {t("creditsCount", { count: plan.credits })}
+                      </p>
+                      <p className="text-xs text-on-surface/50">
+                        {t("secondsCount", { count: plan.seconds })}
+                      </p>
+                    </div>
+                  </div>
+
+                  <ul className="space-y-3 mb-10 flex-grow">
                     {plan.features.map((f) => (
                       <li
                         key={f}
@@ -161,7 +204,13 @@ export function Pricing() {
                       {t(`${plan.key}Cta`)}
                     </Button>
                   ) : (
-                    <Button variant={plan.variant} size="lg" className="w-full">
+                    <Button
+                      variant={plan.variant}
+                      size="lg"
+                      className="w-full"
+                      href="https://apps.apple.com/app/creatorai-ai-video-generator/id6504890498"
+                      external
+                    >
                       {t(`${plan.key}Cta`)}
                     </Button>
                   )}

@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { getBaseUrl } from "@/lib/config";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Link } from "@/i18n/navigation";
@@ -16,7 +17,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "privacy" });
-  const baseUrl = "https://creatorai.art";
+  const baseUrl = getBaseUrl();
 
   return {
     title: t("metaTitle"),

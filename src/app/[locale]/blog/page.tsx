@@ -1,6 +1,8 @@
 import { Suspense } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { getBaseUrl } from "@/lib/config";
+import { Link } from "@/i18n/navigation";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Reveal } from "@/components/ui/reveal";
@@ -18,7 +20,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "blog" });
-  const baseUrl = "https://creatorai.art";
+  const baseUrl = getBaseUrl();
 
   return {
     title: t("indexTitle"),
@@ -29,6 +31,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         ...routing.locales.map((loc) => [loc, `${baseUrl}/${loc}/blog`]),
         ["x-default", `${baseUrl}/en/blog`],
       ]),
+    },
+    openGraph: {
+      title: t("indexTitle"),
+      description: t("indexDescription"),
+      url: `${baseUrl}/${locale}/blog`,
+      siteName: "CreatorAI",
+      type: "website",
+      images: [{ url: "/og.png", width: 1200, height: 630, alt: "CreatorAI Blog" }],
     },
   };
 }
@@ -121,24 +131,24 @@ export default async function BlogIndexPage({ params, searchParams }: Props) {
           {/* Tag Filter */}
           {tags.length > 0 && (
             <div className="flex flex-wrap gap-2 justify-center mb-12">
-              <a
-                href={`/${locale}/blog`}
+              <Link
+                href="/blog"
                 className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
                   !tagSlug ? "bg-primary-container text-on-primary-container" : "glass-panel text-on-surface/60 hover:text-on-surface"
                 }`}
               >
                 {t("allPosts")}
-              </a>
+              </Link>
               {tags.map((tag: any) => (
-                <a
+                <Link
                   key={tag.slug}
-                  href={`/${locale}/blog?tag=${tag.slug}`}
+                  href={`/blog?tag=${tag.slug}`}
                   className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
                     tagSlug === tag.slug ? "bg-primary-container text-on-primary-container" : "glass-panel text-on-surface/60 hover:text-on-surface"
                   }`}
                 >
                   {tag.name}
-                </a>
+                </Link>
               ))}
             </div>
           )}
@@ -148,8 +158,8 @@ export default async function BlogIndexPage({ params, searchParams }: Props) {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {posts.map((post: any, i: number) => (
                 <Reveal key={post.slug} delay={i * 60}>
-                  <a
-                    href={`/${locale}/blog/${post.slug}`}
+                  <Link
+                    href={`/blog/${post.slug}`}
                     className="block glass-panel rounded-2xl overflow-hidden hover:scale-[1.02] transition-transform h-full"
                   >
                     {post.imageUrl && (
@@ -175,7 +185,7 @@ export default async function BlogIndexPage({ params, searchParams }: Props) {
                         </div>
                       )}
                     </div>
-                  </a>
+                  </Link>
                 </Reveal>
               ))}
             </div>

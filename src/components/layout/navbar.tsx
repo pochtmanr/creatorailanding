@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { DesktopNav } from "./desktop-nav";
 import { MobileNav } from "./mobile-nav";
 import { ThemeToggle } from "./theme-toggle";
+import { Logo } from "@/components/ui/logo";
 
 
 export async function Navbar() {
@@ -12,7 +13,8 @@ export async function Navbar() {
     <nav className="fixed top-0 w-full z-50 bg-surface/40 backdrop-blur-xl border-b border-on-surface/10 shadow-2xl shadow-primary/5">
       <div className="flex justify-between items-center px-4 sm:px-8 py-3 max-w-screen-2xl mx-auto">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-black tracking-tighter text-on-surface font-headline">
+        <Link href="/" className="inline-flex items-center gap-1.5 text-lg font-black tracking-tighter text-on-surface font-headline" dir="ltr">
+          <Logo size={24} />
           CreatorAI
         </Link>
 

@@ -14,8 +14,7 @@
   "trust": {
     "creators": "Creators",
     "videos": "Videos Generated",
-    "quality": "Cinema Quality",
-    "countries": "Countries"
+    "languages": "Languages Supported"
   },
   "showcase": {
     "title": "Your Studio in Your Pocket",
@@ -37,7 +36,7 @@
     "renderTitle": "Frame Synthesis",
     "renderDesc": "Our clusters render high-fidelity temporal coherent frames, maintaining style and physics with zero ghosting.",
     "exportTitle": "Viral Export",
-    "exportDesc": "One-tap upscaling to 4K and instant social distribution. Optimized for TikTok, Reels, and YouTube Shorts."
+    "exportDesc": "One-tap export in Full HD and instant social distribution. Optimized for TikTok, Reels, and YouTube Shorts."
   },
   "features": {
     "title": "Everything You Need to Create",
@@ -70,29 +69,38 @@
   },
   "pricing": {
     "title": "Designed for Creators",
-    "subtitle": "From solo artists to enterprise studios, we have a canvas for you.",
+    "subtitle": "Pay per credit. 1 credit = 1 second of video. Scale as you grow.",
     "monthly": "Monthly",
     "yearly": "Yearly (Save 20%)",
     "perMonth": "month",
+    "freePrice": "Free",
     "popular": "Most Popular",
     "noCreditCard": "No credit card required",
     "savePercent": "Save {percent}% with yearly billing",
-    "explorerName": "Explorer",
-    "directorName": "Director",
+    "creditsCount": "{count} credits",
+    "secondsCount": "{count} seconds of video",
+    "freeName": "Free",
+    "starterName": "Starter",
+    "proName": "Pro",
     "studioName": "Studio",
-    "explorerCta": "Get Started",
-    "directorCta": "Go Pro",
+    "freeCta": "Get Started",
+    "starterCta": "Get Started",
+    "proCta": "Go Pro",
     "studioCta": "Contact Sales",
-    "feature_5gen": "5 AI Generations / month",
-    "feature_720p": "Standard Quality (720p)",
+    "feature_basicQuality": "Standard Quality (720p)",
+    "feature_watermark": "CreatorAI Watermark",
     "feature_community": "Community Support",
-    "feature_unlimited": "Unlimited Generations",
-    "feature_4k": "4K Upscaling Included",
-    "feature_beta": "Early Access to Beta Models",
-    "feature_priority": "Priority GPU Queue",
-    "feature_team": "Team Collaboration Hub",
-    "feature_finetune": "Custom Model Fine-tuning",
-    "feature_api": "Dedicated API Access",
+    "feature_hdQuality": "HD Quality (1080p)",
+    "feature_noWatermark": "No Watermark",
+    "feature_emailSupport": "Email Support",
+    "feature_fullHd": "Full HD Quality (1080p)",
+    "feature_priorityQueue": "Priority GPU Queue",
+    "feature_betaModels": "Early Access to Beta Models",
+    "feature_voiceCloning": "Voice Cloning",
+    "feature_teamHub": "Team Collaboration Hub",
+    "feature_customFinetune": "Custom Model Fine-tuning",
+    "feature_dedicatedApi": "Dedicated API Access",
+    "feature_prioritySupport": "Priority Support",
     "salesModal": {
       "title": "Contact Sales",
       "email": "Email",
@@ -122,9 +130,9 @@
     "title": "Frequently Asked Questions",
     "subtitle": "Everything you need to know about CreatorAI.",
     "pricingQ": "Is CreatorAI really free to start?",
-    "pricingA": "Yes! The Explorer plan gives you 5 free AI generations per month with 720p quality. No credit card required. Upgrade anytime to unlock unlimited generations and 4K quality.",
+    "pricingA": "Yes! The Free plan gives you 10 credits per month with standard quality. No credit card required. Upgrade anytime for more credits and Full HD (1080p) output.",
     "qualityQ": "What video quality can I expect?",
-    "qualityA": "Explorer plans render at 720p. Director and Studio plans include 4K upscaling with our proprietary enhancement engine, producing cinema-grade output suitable for professional use.",
+    "qualityA": "The Free plan renders at 720p. Starter, Pro, and Studio plans include Full HD (1080p) output with our proprietary enhancement engine, producing cinema-grade results suitable for professional use.",
     "formatsQ": "What export formats are supported?",
     "formatsA": "We support MP4 (H.264/H.265), MOV, and WebM. Each export is automatically optimized for your target platform — TikTok (9:16), Instagram (4:5, 1:1, 9:16), YouTube (16:9, 9:16).",
     "aiModelsQ": "What AI models does CreatorAI use?",
@@ -162,10 +170,10 @@
     "rights": "All rights reserved."
   },
   "download": {
-    "appStore": "Download on the App Store",
-    "googlePlay": "Get it on Google Play",
-    "alsoOnIos": "Also available on iOS",
-    "alsoOnAndroid": "Also available on Android"
+    "appStore": "App Store",
+    "googlePlay": "Google Play",
+    "alsoOnIos": "Available on iOS",
+    "alsoOnAndroid": "Available on Android"
   },
   "apiPage": {
     "metaTitle": "API",
@@ -269,7 +277,7 @@
       },
       "accessibility": {
         "title": "Quality Without Compromise",
-        "description": "We obsess over output quality. From 720p to 4K, every frame should look like it was made by a professional production team."
+        "description": "We obsess over output quality. Every frame should look like it was made by a professional production team."
       },
       "creatorFirst": {
         "title": "Creator-First",

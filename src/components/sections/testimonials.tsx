@@ -2,9 +2,9 @@ import { getTranslations } from "next-intl/server";
 import { Reveal } from "@/components/ui/reveal";
 
 const testimonials = [
-  { key: "sarah", gradient: "from-primary-container/30 to-tertiary-container/30" },
-  { key: "david", gradient: "from-tertiary-container/30 to-primary-container/30" },
-  { key: "maya", gradient: "from-primary/30 to-primary-container/30" },
+  { key: "sarah", emoji: "👩🏻‍💻" },
+  { key: "david", emoji: "🧑🏻" },
+  { key: "maya", emoji: "👩🏽‍🎨" },
 ];
 
 function StarRating() {
@@ -40,8 +40,10 @@ export async function Testimonials() {
                 <div className="absolute top-4 end-6 text-6xl font-serif text-primary-container/10 leading-none">&ldquo;</div>
 
                 <div className="flex items-center gap-4 mb-6">
-                  {/* Avatar placeholder */}
-                  <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${item.gradient}`} />
+                  {/* Memoji-style emoji avatar */}
+                  <div className="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center text-2xl">
+                    {item.emoji}
+                  </div>
                   <div>
                     <div className="font-headline font-bold text-on-surface text-sm">{t(`${item.key}Name`)}</div>
                     <div className="text-on-surface/40 text-xs">{t(`${item.key}Role`)}</div>
